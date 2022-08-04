@@ -1,0 +1,57 @@
+{% extends 'includes/master.html' %}
+  
+
+     {% block content %}
+
+	 <aside id="colorlib-aside" width="30" role="complementary"  class="js-fullheight py-5">
+        <form action="{% url 'index' %}" method="get">
+          <input type="text" name="query" placeholder="Search Movie or Category" id="">
+          <!-- <input type="submit" value="Search"> -->
+      </form>
+        <nav id="colorlib-main-menu" role="navigation">
+        
+          <ul>
+            <li class="colorlib-active"><a href="{% url 'index' %}">All</a></li>
+            {% for genre in Genre %}
+            <li class="colorlib-active"><a href="{% url 'index' %}?query={{genre.name}}">{{ genre.name }}</a></li>
+  
+            {% endfor %}
+            <!-- <li><a href="#">Project</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li> -->
+          </ul>
+        </nav>
+      </aside> <!-- END COLORLIB-ASIDE -->
+		<div id="colorlib-main">
+			<section class="ftco-section pt-4 mb-5 ftco-intro">
+				<div class="container-fluid px-3 px-md-0">
+					<div class="row">
+						<div class="col-md-12 mb-4">
+							
+							<h1 class="h2">Welcome to Cinemania</h1>
+							<p>Here is Your Favorite</p>
+						</div>
+						{% for movie in Movie %}
+						<div class="col-md-4">
+							<a href="viewMovie/{{movie.id}}">
+							<p>@{{movie.user.username}}</p>
+							<img class="rounded" src="{{ movie.poster.url }}" width="100" height="300" style="width: 100%" alt="{{ movie.poster }}" srcset="">
+							<h4 class="h4">{{ movie.title }}</h4>
+						</a>
+							<!-- <p>{{ movie.description }}</p> -->
+						</div>
+						{% endfor %}
+						
+					</div>
+				</div>
+			</section>
+		</div><!-- END COLORLIB-MAIN -->
+
+
+	
+	
+
+{% endblock content %}
+

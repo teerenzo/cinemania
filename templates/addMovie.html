@@ -1,0 +1,68 @@
+
+
+    {% extends 'includes/master.html' %}
+  
+
+    {% block content %}
+    <div class="container row py-5 justify-content-center">
+        <div class="card col-md-6">
+        <div class="card-body">
+
+<h2>Add Your Favorte Movie </h2>
+<form method="post" class="form" enctype="multipart/form-data">
+  {% csrf_token %}
+  <form action="" method="post" class="">
+    {% csrf_token %} 
+    
+    <!-- {{ form.as_p }} -->
+    <!-- <label for="host">Host:</label> -->
+    <input type="hidden" name="user" value="{{user.id}}">
+    
+<div class="form-group">
+
+
+    <label for="genre">Genre:</label>
+    <select name="genre" class="form-control" id="">
+       {% for item in genre %}
+       <option value="{{item.id}}">{{ item.name }}</option>
+       {% endfor %}
+    </select></div>
+    <div class="form-group">
+
+
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" id="">
+    </div>
+
+    <div class="form-group">
+
+
+    <label for="actor">Actors</label>
+    <textarea name="actor" class="form-control" id=""></textarea>
+</div>
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" class="form-control" id="" ></textarea>
+</div>
+
+<div class="form-group">
+
+    <label for="title">Release Date</label>
+    <input type="date" class="form-control" name="rdate" id=""><br>
+</div>
+    <div class="form-group">
+    <label for="poster">POster</label>
+    <input type="file" class="form-control" name="poster" id="">
+</div>
+
+    <div class="form-group">
+    <label for="trailer">Trailer</label>
+    <textarea name="trailer" class="form-control" id=""></textarea>
+</div>
+
+  <button class="btn btn-primary" type="submit">Save</button>
+</form>
+        </div>
+        </div></div>
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Cinemania</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{% static 'css/style.css'  %}">
+
+	</head>	
+	<body>
+    <div id="colorlib-page">
+     
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+        </li>
+       
+        {% if user.is_authenticated %}
+      
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/addMovie">add you Favorite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">View Profile({{user.username}})</a>
+        </li>
+
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="/logout">Logout</a> -->
+          <form action="/logout" method="get"><input type="hidden" name="next" value="/">
+            <input class="btn" type="submit" value="Logout" >
+          </form>
+        </li>
+
+  
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+       
+        {% endif %}
+      
+       
+        </ul>
+        
+      <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+
+        {% block content %}
+    
+    
+        {% endblock %}
+      </div><!-- END COLORLIB-PAGE -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
